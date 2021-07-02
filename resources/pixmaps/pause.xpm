@@ -1,0 +1,27 @@
+/* XPM */
+static char *pause_xpm[] = {
+/* width height num_colors chars_per_pixel */
+"    13    15        5            1",
+/* colors */
+". c #b2c0dc",
+"# c #949594",
+"a c #000000",
+"b c #8e8e8e",
+"c c #ffffff",
+/* pixels */
+"######.######",
+"#aaabc.#aaabc",
+"#aaabc.#aaabc",
+"#aaabc.#aaabc",
+"#aaabc.#aaabc",
+"#aaabc.#aaabc",
+"#aaabc.#aaabc",
+"#aaabc.#aaabc",
+"#aaabc.#aaabc",
+"#aaabc.#aaabc",
+"#aaabc.#aaabc",
+"#aaabc.#aaabc",
+"#aaabc.#aaabc",
+"#abbbc.#abbbc",
+"#ccccc.#ccccc"
+};

@@ -1,0 +1,12 @@
+MOTION STRATEGY LIBRARY
+
+The examples in these directories are provided to illustrate
+how to use MSL.  Reasonable parameters have been selected for
+each example so that plangl can be executed directly on them;
+however, the parameter values are not necessarily the best
+choices.  In some cases, a planning algorithm might fail to
+solve the problem.  This occurs partly because we continue 
+to change the software without repeatedly testing this large
+collection of examples.  Hopefully, we will improve the examples
+in future versions.  Please be patient...
+
