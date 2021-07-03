@@ -20,9 +20,10 @@
 
 #include <cstring>
 #include <algorithm>
-#include "msl/renderglobj.h"
+
 #include "msl/defs.h"
 
+#include "msl_gui/renderglobj.h"
 
 //****!!!!!!!!!!!!!!!!!!!!!!!!!!!! -- came from matrix.C -- 1/5/01
 void rotate_x_matrix(double sita, MSLMatrix& m)

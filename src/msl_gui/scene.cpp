@@ -19,8 +19,9 @@
 //#include <fstream.h>
 #include <math.h>
 
-#include "msl/scene.h"
 #include "msl/defs.h"
+
+#include "msl_gui/scene.h"
 
 // Constructor
 Scene::Scene(Problem *problem, string path = "") {

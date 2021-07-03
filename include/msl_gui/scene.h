@@ -2,25 +2,25 @@
 //               The Motion Strategy Library (MSL)
 //----------------------------------------------------------------------
 //
-// Copyright (c) University of Illinois and Steven M. LaValle.     
+// Copyright (c) University of Illinois and Steven M. LaValle.
 // All Rights Reserved.
-// 
-// Permission to use, copy, and distribute this software and its 
-// documentation is hereby granted free of charge, provided that 
-// (1) it is not a component of a commercial product, and 
+//
+// Permission to use, copy, and distribute this software and its
+// documentation is hereby granted free of charge, provided that
+// (1) it is not a component of a commercial product, and
 // (2) this notice appears in all copies of the software and
-//     related documentation. 
-// 
+//     related documentation.
+//
 // The University of Illinois and the author make no representations
-// about the suitability or fitness of this software for any purpose.  
+// about the suitability or fitness of this software for any purpose.
 // It is provided "as is" without express or implied warranty.
 //----------------------------------------------------------------------
 
 #ifndef MSL_SCENE_H
 #define MSL_SCENE_H
 
-#include "problem.h"
-#include "util.h"
+#include "msl/problem.h"
+#include "msl/util.h"
 
 //! An interface class that gives Problem information to Render.
 //! It tells the renderer how the "scene" appears for rendering
@@ -53,7 +53,7 @@ class Scene {
 
   //! The smallest x,y,z world coordinates for the environment
   MSLVector LowerWorld;
-  
+
   //! The largest x,y,z world coordinated for the environment
   MSLVector UpperWorld;
 
@@ -63,7 +63,7 @@ class Scene {
   //! The direction the default camera is pointing with respect to the model
   MSLVector GlobalCameraDirection;
 
-  //! The up direction of the default camera 
+  //! The up direction of the default camera
   MSLVector GlobalCameraZenith;
 
   //! The location of the body-attached camera in x,y,z
@@ -72,7 +72,7 @@ class Scene {
   //! The direction the body-attached camera is pointing
   MSLVector AttachedCameraDirection;
 
-  //! The up direction of the body-attached camera 
+  //! The up direction of the body-attached camera
   MSLVector AttachedCameraZenith;
 
   //! The index of the body to which the camera is attached (default = 0)
@@ -80,7 +80,7 @@ class Scene {
 
   //! Scene must be initialized with the Problem that was passed to the planner
   Scene(Problem *problem, string path);
-  
+
   //! Empty destructor
   virtual ~Scene() {};
 
@@ -91,8 +91,8 @@ class Scene {
   virtual MSLVector StateToSceneConfiguration(const MSLVector &x);
 
   //! Interpolate the states; convert the result to a SceneConfiguratrion
-  virtual MSLVector InterpolatedSceneConfiguration(const MSLVector &x1, 
-						   const MSLVector &x2, 
+  virtual MSLVector InterpolatedSceneConfiguration(const MSLVector &x1,
+						   const MSLVector &x2,
 						   const double &a);
 };
 

@@ -16,4 +16,55 @@
 // It is provided "as is" without express or implied warranty.
 //----------------------------------------------------------------------
 
-#include "msl/marray.h"
+#include <math.h>
+#include <stdlib.h>
+
+#include <fx.h>
+
+#include "msl/rrt.h"
+#include "msl/defs.h"
+#include "msl/util.h"
+
+#include "msl_gui/rendergl.h"
+#include "msl_gui/guiplanner.h"
+#include "msl_gui/setup.h"
+
+int main(int argc, char *argv[])
+{
+  string path;
+  GuiPlanner *gui;
+  Model *m = NULL;
+  Geom *g = NULL;
+  Problem *prob;
+
+  if (argc < 2) {
+    cout << "Usage:    plangl <problem path>\n";
+    exit(-1);
+  }
+
+#ifdef WIN32
+  path = string(argv[1]);
+#else
+  path = string(argv[1])+"/";
+#endif
+
+  if (!is_directory(path)) {
+    cout << "Error:   Directory does not exist\n";
+    exit(-1);
+  }
+
+#ifdef WIN32
+  path = path + "/";
+#endif
+
+  SetupProblem(m,g,path);
+
+  prob = new Problem(g,m,path);
+
+  gui = new GuiPlanner(new RenderGL(new Scene(prob, path), path),
+		       new RRTConCon(prob));
+
+  gui->Start();
+
+  return 0;
+}

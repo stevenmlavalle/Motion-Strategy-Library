@@ -2,17 +2,17 @@
 //               The Motion Strategy Library (MSL)
 //----------------------------------------------------------------------
 //
-// Copyright (c) University of Illinois and Steven M. LaValle.     
+// Copyright (c) University of Illinois and Steven M. LaValle.
 // All Rights Reserved.
-// 
-// Permission to use, copy, and distribute this software and its 
-// documentation is hereby granted free of charge, provided that 
-// (1) it is not a component of a commercial product, and 
+//
+// Permission to use, copy, and distribute this software and its
+// documentation is hereby granted free of charge, provided that
+// (1) it is not a component of a commercial product, and
 // (2) this notice appears in all copies of the software and
-//     related documentation. 
-// 
+//     related documentation.
+//
 // The University of Illinois and the author make no representations
-// about the suitability or fitness of this software for any purpose.  
+// about the suitability or fitness of this software for any purpose.
 // It is provided "as is" without express or implied warranty.
 //----------------------------------------------------------------------
 
@@ -32,15 +32,15 @@
 using namespace std;
 //  #include <unistd.h>     // needed to sleep.
 
-#include "triangle.h"
-#include "vector.h"
-#include "matrix.h"
-#include "point3d.h"
-#include "util.h"
-
 #include <GL/glut.h>
 #include <GL/gl.h>	// Header File For The OpenGL32 Library
 #include <GL/glu.h>	// Header File For The GLu32 Library
+
+#include "msl/triangle.h"
+#include "msl/vector.h"
+#include "msl/matrix.h"
+#include "msl/point3d.h"
+#include "msl/util.h"
 
 #define	BUFFER_SIZE	4096
 #define	FACE_SIZE	2048
@@ -50,8 +50,8 @@ using namespace std;
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!! -- originally from chpdef.h -- 1/5/01
 #define MinX                            -100.0
-#define MinY                            -100.0 
-#define MaxX                             100.0 
+#define MinY                            -100.0
+#define MaxX                             100.0
 #define MaxY                             100.0
 #define MinZ                             100.0
 #define MaxZ                             300.0
@@ -75,7 +75,7 @@ using namespace std;
 #define CREATE_OBJECT_OVER_ID            217
 #define CREATE_POINT_ID                  218
 #define CREATE_POINT_OVER_ID             219
-#define CURRENT_TEXTURE_ID               220 
+#define CURRENT_TEXTURE_ID               220
 #define OBJECT_SELECTION_ID              221
 #define PLAN_ID                          222
 #define ANIMATE_ID                       223
@@ -100,7 +100,7 @@ using namespace std;
 #define SHOW_BOUNDINGBOX_ID              308
 #define HIDE_BOUNDINGBOX_ID              309
 #define SUN_LIGHT_MODE                   310
-#define EYE_LIGHT_MODE                   311 
+#define EYE_LIGHT_MODE                   311
 //  !!!!!!!!!!!!!!!!!!!!!!!! -- originally from chpdef.h -- 1/5/01
 
 
@@ -261,8 +261,8 @@ class mslGLObject
   mslGLMaterial * ObjectMaterialLib;
 
   int NumberOfFace;
-  mslGLFace * ObjectFaceLib; 
-  
+  mslGLFace * ObjectFaceLib;
+
   float Position[3], Orientation[3];
   float Scale[3];
 
@@ -306,10 +306,9 @@ class mslGLObject
 
 
 //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -- come from generalfunction.h -- 1/5/01
-mslGLNormal NormalCompute(const mslGLVertex& v1, const mslGLVertex& v2, 
+mslGLNormal NormalCompute(const mslGLVertex& v1, const mslGLVertex& v2,
 			  const mslGLVertex& v3);
 //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -- come from generalfunction.h -- 1/5/01
 
 
 #endif
-

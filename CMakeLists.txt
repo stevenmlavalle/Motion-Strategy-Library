@@ -1,31 +1,39 @@
+# CMake requirements
 cmake_minimum_required(VERSION 3.10)
 
+# Project name and version
 project(MotionStrategyLibrary VERSION 1.0)
 
+# Define minimum C++ standard
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+# Define where to find custom CMake modules
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
+# Optional builds
+include(CMakeDependentOption)
+option(BUILD_GUI "Build planner applications" ON)
+cmake_dependent_option(BUILD_GUI_GL "Build planner application using OpenGL" ON
+                       "BUILD_GUI" OFF)
+cmake_dependent_option(BUILD_GUI_INVENTOR "Build planner application using Inventor" OFF
+                       "BUILD_GUI" OFF)
+cmake_dependent_option(BUILD_GUI_PERFORMER "Build planner application using Performer" OFF
+                       "BUILD_GUI" OFF)
+
+# Find dependencies
 find_package(PQP REQUIRED)
 
-find_package(FOX)
+if (BUILD_GUI)
+  find_package(FOX REQUIRED)
 
-set(OpenGL_GL_PREFERENCE GLVND)
-find_package(OpenGL)
+  if (BUILD_GUI_GL)
+    set(OpenGL_GL_PREFERENCE GLVND)
+    find_package(OpenGL REQUIRED)
 
-find_package(GLUT)
-
-if(OPENGL_FOUND AND GLUT_FOUND)
-  set(BUILD_GL_APP TRUE)
-else()
-  set(BUILD_GL_APP FALSE)
+    find_package(GLUT REQUIRED)
+  endif()
 endif()
 
-if(FOX_FOUND AND BUILD_GL_APP)
-  set(BUILD_GUI TRUE)
-else()
-  set(BUILD_GUI FALSE)
-endif()
-
-add_subdirectory(src/msl)
+# add sources directory
+add_subdirectory(src)

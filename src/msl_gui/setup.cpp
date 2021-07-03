@@ -34,6 +34,8 @@
 
 #include "msl/defs.h"
 
+#include "msl_gui/setup.h"
+
 #define MAKE_MODEL(_m)  if (is_file(path+""#_m"")) m = new _m(path);
 #define MAKE_GEOM(_g)  if (is_file(path+""#_g"")) g = new _g(path);
 

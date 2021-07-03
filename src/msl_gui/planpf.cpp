@@ -16,44 +16,45 @@
 // It is provided "as is" without express or implied warranty.
 //----------------------------------------------------------------------
 
-//#include "msllist.h"
+#include <math.h>
+#include <stdlib.h>
 
-#ifdef WIN32
-	#include <fstream>
-	#include <iostream>
-	#include <list>
-	#include <vector>
-	using namespace std;
-#else
-	#include <stream>
-	#include <list>
-	#include <vector>
-#endif
+#include "msl/rrt.h"
+#include "msl/defs.h"
+#include "msl/util.h"
 
+#include "msl_gui/renderpf.h"
+#include "msl_gui/guiplanner.h"
+#include "msl_gui/setup.h"
 
-template<class T, class A = allocator<T> >
-ostream& operator<<(ostream& out, const list<T>& L)
+int main(int argc, char *argv[])
 {
-  list<MSLVector>::iterator x;
-  list<MSLVector> vl;
-  vl = L;
-  for (x = vl.begin(); x != vl.end(); x++)
-    out << " " << *x;
-  return out;
-}
+  string path;
+  GuiPlanner *gui;
+  Model *m = NULL;
+  Geom *g = NULL;
+  Problem *prob;
 
-template<class T, class A = allocator<T> >
-istream& operator>>(istream& in, list<T>& L)
-{
-  L.clear();
-  MSLVector x;
-  for(;;)
-    {
-      char c;
-      while (in.get(c) && isspace(c));
-      if (!in) break;
-      in.putback(c);
-      x = T(); in >> x; L.push_back(x);
-   }
-  return in;
+  if (argc < 2) {
+    cout << "Usage:    planpf <problem path>\n";
+    exit(-1);
+  }
+
+  path = string(argv[1])+"/";
+
+  if (!is_directory(path)) {
+    cout << "Error:   Directory does not exist\n";
+    exit(-1);
+  }
+
+  SetupProblem(m,g,path);
+
+  prob = new Problem(g,m,path);
+
+  gui = new GuiPlanner(new RenderPerformer(new Scene(prob, path), path),
+		       new RRTConCon(prob));
+
+  gui->Start();
+
+  return 0;
 }

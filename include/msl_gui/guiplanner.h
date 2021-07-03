@@ -2,17 +2,17 @@
 //               The Motion Strategy Library (MSL)
 //----------------------------------------------------------------------
 //
-// Copyright (c) University of Illinois and Steven M. LaValle.     
+// Copyright (c) University of Illinois and Steven M. LaValle.
 // All Rights Reserved.
-// 
-// Permission to use, copy, and distribute this software and its 
-// documentation is hereby granted free of charge, provided that 
-// (1) it is not a component of a commercial product, and 
+//
+// Permission to use, copy, and distribute this software and its
+// documentation is hereby granted free of charge, provided that
+// (1) it is not a component of a commercial product, and
 // (2) this notice appears in all copies of the software and
-//     related documentation. 
-// 
+//     related documentation.
+//
 // The University of Illinois and the author make no representations
-// about the suitability or fitness of this software for any purpose.  
+// about the suitability or fitness of this software for any purpose.
 // It is provided "as is" without express or implied warranty.
 //----------------------------------------------------------------------
 
@@ -24,14 +24,16 @@
 #include <sys/stat.h>
 #include <signal.h>
 #include <fx.h>
+
+#include "msl/defs.h"
+#include "msl/planner.h"
+#include "msl/rrt.h"
+#include "msl/rcrrt.h"
+#include "msl/prm.h"
+#include "msl/fdp.h"
+#include "msl/util.h"
+
 #include "gui.h"
-#include "defs.h"
-#include "planner.h"
-#include "rrt.h"
-#include "rcrrt.h"
-#include "prm.h"
-#include "fdp.h"
-#include "util.h"
 
 //! A rendering-independent GUI for the Planner classes
 
@@ -87,7 +89,7 @@ private:
   FXVerticalFrame   *buttonFrame;             // Button frame
   FXCanvas          *canvas;                  // Canvas to draw into
   int               indexx,indexy;
-  
+
 protected:
   MSLPlotWindow(){}
 
@@ -99,7 +101,7 @@ public:
   // Message handlers
   long onPaint(FXObject*,FXSelector,void*);
   long onCmdPrint(FXObject*,FXSelector,void*);
-  
+
   MSLPlotWindow(MSLPlannerWindow* owner);
 
   void drawPage(FXDC& dc,FXint w,FXint h,FXint tx = 0,FXint ty = 0);

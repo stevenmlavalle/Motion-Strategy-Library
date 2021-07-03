@@ -2,17 +2,17 @@
 //               The Motion Strategy Library (MSL)
 //----------------------------------------------------------------------
 //
-// Copyright (c) University of Illinois and Steven M. LaValle.     
+// Copyright (c) University of Illinois and Steven M. LaValle.
 // All Rights Reserved.
-// 
-// Permission to use, copy, and distribute this software and its 
-// documentation is hereby granted free of charge, provided that 
-// (1) it is not a component of a commercial product, and 
+//
+// Permission to use, copy, and distribute this software and its
+// documentation is hereby granted free of charge, provided that
+// (1) it is not a component of a commercial product, and
 // (2) this notice appears in all copies of the software and
-//     related documentation. 
-// 
+//     related documentation.
+//
 // The University of Illinois and the author make no representations
-// about the suitability or fitness of this software for any purpose.  
+// about the suitability or fitness of this software for any purpose.
 // It is provided "as is" without express or implied warranty.
 //----------------------------------------------------------------------
 
@@ -22,10 +22,11 @@
 // FOX GUI library
 #include <fx.h>
 
-#include "problem.h"
+#include "msl/problem.h"
+#include "msl/util.h"
+
 #include "scene.h"
 #include "render.h"
-#include "util.h"
 
 class Render;  // This needs to be here because of mutual reference
 
@@ -38,7 +39,7 @@ Currently, there is one derived class which serves as the GUI for all
 of the RRT-based planners.  Each instance of Gui includes an instance
 of an RRT Planner class and an instance of a Render class.  Using this
 design, the same basic GUI design can be used, regardless of the
-particular rendering methods.  
+particular rendering methods.
 */
 
 class Gui {
@@ -95,7 +96,7 @@ enum {
   GID_VCR_FASTER,
   GID_VCR_RESET,
   GID_RENDER_LAST,
-  
+
   // General Gui IDs
   GID_CONSTRUCT,
   GID_PLAN,
@@ -108,7 +109,7 @@ enum {
   GID_SAVE_PATH,
   GID_LOAD_PATH,
   GID_DONE,
-  
+
   GID_RRT,
   GID_RRTGOALBIAS,
   GID_RRTCON,

@@ -19,8 +19,9 @@
 #include <math.h>
 #include <stdlib.h>
 
-#include "msl/render.h"
 #include "msl/defs.h"
+
+#include "msl_gui/render.h"
 
 // Include the VCR buttons
 #include "pixmaps/ff.xpm"
@@ -33,7 +34,6 @@
 
 // Include the msl icon
 #include "pixmaps/msl.xpm"
-
 
 ////////////////////////////////////////////////////////
 //

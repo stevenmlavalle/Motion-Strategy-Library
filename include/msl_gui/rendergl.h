@@ -2,17 +2,17 @@
 //               The Motion Strategy Library (MSL)
 //----------------------------------------------------------------------
 //
-// Copyright (c) University of Illinois and Steven M. LaValle.     
+// Copyright (c) University of Illinois and Steven M. LaValle.
 // All Rights Reserved.
-// 
-// Permission to use, copy, and distribute this software and its 
-// documentation is hereby granted free of charge, provided that 
-// (1) it is not a component of a commercial product, and 
+//
+// Permission to use, copy, and distribute this software and its
+// documentation is hereby granted free of charge, provided that
+// (1) it is not a component of a commercial product, and
 // (2) this notice appears in all copies of the software and
-//     related documentation. 
-// 
+//     related documentation.
+//
 // The University of Illinois and the author make no representations
-// about the suitability or fitness of this software for any purpose.  
+// about the suitability or fitness of this software for any purpose.
 // It is provided "as is" without express or implied warranty.
 //----------------------------------------------------------------------
 
@@ -27,13 +27,14 @@
 //#include <vector.h>
 //#include <string>
 
+#include "msl/triangle.h"
+#include "msl/vector.h"
+#include "msl/defs.h"
+#include "msl/util.h"
+#include "msl/mslio.h"
+
 #include "render.h"
-#include "triangle.h"
 #include "renderglobj.h"
-#include "vector.h"
-#include "defs.h"
-#include "util.h"
-#include "mslio.h"
 
 //! Perform 3D rendering using the GL and GLUT libraries
 class RenderGL: public Render
@@ -80,8 +81,8 @@ class RenderGL: public Render
   // robot and obstacle model information list
   mslGLObject ** SceneBodyLib;
   mslGLObject ** SceneEnvObjLib;
-  
-  // used to control the original scale, position of object 
+
+  // used to control the original scale, position of object
   MSLVector EnvTransform;
   MSLVector BodyTransform;
 
@@ -91,8 +92,8 @@ class RenderGL: public Render
   // control varibles
   int SelectObjectID;
   int CurrentObject;
- 
-  // mouse control parameter 
+
+  // mouse control parameter
   int CurrentMouseButton, CurrentMouseState;
   int CurrentKeyboard;
   float LastX, LastY;
@@ -135,7 +136,7 @@ class RenderGL: public Render
 
   void ShowCoordinateFrame();
 
- public: 
+ public:
   Gui *G;
 
   RenderGL();

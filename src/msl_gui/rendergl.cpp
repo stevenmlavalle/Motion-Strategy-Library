@@ -19,7 +19,7 @@
 #include <math.h>
 #include <stdlib.h>
 
-#include "msl/rendergl.h"
+#include "msl_gui/rendergl.h"
 
 // Because the callback methods are static members that are not allowed by
 // glut to take an arguments, we have to recover the class data.  There

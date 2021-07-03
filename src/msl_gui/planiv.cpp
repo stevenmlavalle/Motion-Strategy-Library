@@ -20,11 +20,12 @@
 #include <stdlib.h>
 
 #include "msl/rrt.h"
-#include "msl/renderpf.h"
-#include "msl/guiplanner.h"
-#include "msl/setup.h"
 #include "msl/defs.h"
 #include "msl/util.h"
+
+#include "msl_gui/renderiv.h"
+#include "msl_gui/guiplanner.h"
+#include "msl_gui/setup.h"
 
 int main(int argc, char *argv[])
 {
@@ -35,7 +36,7 @@ int main(int argc, char *argv[])
   Problem *prob;
 
   if (argc < 2) {
-    cout << "Usage:    planpf <problem path>\n";
+    cout << "Usage:    " << argv[0] << " <problem path>\n";
     exit(-1);
   }
 
@@ -50,7 +51,7 @@ int main(int argc, char *argv[])
 
   prob = new Problem(g,m,path);
 
-  gui = new GuiPlanner(new RenderPerformer(new Scene(prob, path), path),
+  gui = new GuiPlanner(new RenderIv(new Scene(prob, path), path),
 		       new RRTConCon(prob));
 
   gui->Start();

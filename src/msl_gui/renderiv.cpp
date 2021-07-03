@@ -37,9 +37,9 @@
 #include <Inventor/fields/SoMFInt32.h>
 
 // MSL includes
-#include "msl/renderiv.h"
 #include "msl/defs.h"
 
+#include "msl_gui/renderiv.h"
 
 // default viewer dimensions
 const short DEF_VIEWER_WIDTH  = 500;

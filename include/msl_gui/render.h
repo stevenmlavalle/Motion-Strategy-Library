@@ -2,17 +2,17 @@
 //               The Motion Strategy Library (MSL)
 //----------------------------------------------------------------------
 //
-// Copyright (c) University of Illinois and Steven M. LaValle.     
+// Copyright (c) University of Illinois and Steven M. LaValle.
 // All Rights Reserved.
-// 
-// Permission to use, copy, and distribute this software and its 
-// documentation is hereby granted free of charge, provided that 
-// (1) it is not a component of a commercial product, and 
+//
+// Permission to use, copy, and distribute this software and its
+// documentation is hereby granted free of charge, provided that
+// (1) it is not a component of a commercial product, and
 // (2) this notice appears in all copies of the software and
-//     related documentation. 
-// 
+//     related documentation.
+//
 // The University of Illinois and the author make no representations
-// about the suitability or fitness of this software for any purpose.  
+// about the suitability or fitness of this software for any purpose.
 // It is provided "as is" without express or implied warranty.
 //----------------------------------------------------------------------
 
@@ -23,17 +23,18 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "msl/mslio.h"
+#include "msl/util.h"
+
 #include "scene.h"
 #include "gui.h"  // Seems circular, but needed because of mutual reference
-#include "mslio.h"
-#include "util.h"
 
 class Gui; // This needs to be here because of mutual reference
 
 #define RENDERCOLORS 10  // Number of colors
 
 //! A rendering class that accepts commands from a Gui, and determines
-//! using specific graphics libraries how to draw the results on a 
+//! using specific graphics libraries how to draw the results on a
 //! screen.
 
 /*!  This hierarchy of classes contains different implementations of
@@ -45,18 +46,18 @@ Render corresponds to a different graphics system.  Presently, there
 are renderers for Open Inventor and Open GL.  The
 flexibility provided by these classes enables easy extensions to be
 made for other graphics libraries and platforms, such as Open
-Inventor.  
+Inventor.
 
-The rendering is expressed in terms of a Scene, in which the 
+The rendering is expressed in terms of a Scene, in which the
 scene configuration gives the configuration of a collection of
 Bodies in a static Environment.
 */
 
-class Render 
+class Render
 {
  protected:
   //! Allow information from a Scene to be accessed
-  Scene *S; 
+  Scene *S;
 
   //! This uses the FrameList to return the SceneConfiguration that is supposed
   //! to be shown at the present time.
@@ -75,9 +76,9 @@ class Render
   list<string> BodyList; // File names of all movable bodies
 
   //! RGB color values
-  float RGBRed[RENDERCOLORS]; 
+  float RGBRed[RENDERCOLORS];
   float RGBGreen[RENDERCOLORS];
-  float RGBBlue[RENDERCOLORS]; 
+  float RGBBlue[RENDERCOLORS];
 
   public:
   //! The path name for accessing files
@@ -92,7 +93,7 @@ class Render
   //! The time stamp of the last frame change
   float LastFrameTime;
 
-  //! The amount of time since the last frame change 
+  //! The amount of time since the last frame change
   float FrameStuckTime;
 
   //! The number of frames in the animation
@@ -106,7 +107,7 @@ class Render
 
   //! The speedup factor for the animation (1.0 = normal speed)
   double AnimationTimeScale;
-  
+
   //! The index in FrameList of the frame that should be currently shown
   int AnimationFrameIndex;
 
@@ -151,7 +152,7 @@ class Render
 
   //! Process IO events
   virtual void HandleEvents() {};
-  
+
   //! If ControlFreak = true, then MainLoop is entered here
   virtual void MainLoop(Gui *g);
 
@@ -166,7 +167,7 @@ class Render
 
   //! Generate FrameList and set AnimationActive to true.
   virtual void MakeAnimationFrames(const list<MSLVector> &xlist, double deltat);
-  virtual void MakeAnimationFrames(const list<MSLVector> &xlist, 
+  virtual void MakeAnimationFrames(const list<MSLVector> &xlist,
 		       const list<double> &timelist);
 
   //! Display an entire path (the specific renderer determines how)
