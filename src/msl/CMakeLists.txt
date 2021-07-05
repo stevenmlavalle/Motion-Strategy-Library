@@ -1,3 +1,9 @@
+add_library(msl_include INTERFACE)
+target_include_directories(msl_include
+  INTERFACE
+  $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
+
 add_library(msl
   STATIC
   geom.cpp
@@ -21,12 +27,7 @@ add_library(msl
   util.cpp
   vector.cpp
   )
-target_include_directories(msl
-  PUBLIC
-  $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
-  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
-target_link_libraries(msl PUBLIC ${PQP_LIBRARY})
-
+target_link_libraries(msl PUBLIC msl_include ${PQP_LIBRARY})
 
 add_library(planner
   STATIC
